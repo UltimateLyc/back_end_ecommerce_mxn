@@ -1,0 +1,38 @@
+{
+  "name": "back_end_ecommerce_mxn",
+  "version": "1.0.0",
+  "description": "Back end for ecommerce mexican prehispanic  products",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon src/index.js",
+    "lint": "standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UltimateLyc/back_end_ecommerce_mxn.git"
+  },
+  "author": "Team Def.v",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UltimateLyc/back_end_ecommerce_mxn.git/issues"
+  },
+  "homepage": "https://github.com/UltimateLyc/back_end_ecommerce_mxn.git#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.10.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.31.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "standard": "^17.0.0"
+  },
+  "eslintConfig": {
+    "extends":[
+      "./node_modules/standard/eslintrc.json"
+    ]
+  }
+}
