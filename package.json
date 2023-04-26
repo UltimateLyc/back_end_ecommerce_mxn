@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/UltimateLyc/back_end_ecommerce_mxn.git#readme",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
     "pg": "^8.10.0",
@@ -31,7 +32,7 @@
     "standard": "^17.0.0"
   },
   "eslintConfig": {
-    "extends":[
+    "extends": [
       "./node_modules/standard/eslintrc.json"
     ]
   }
