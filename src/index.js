@@ -3,6 +3,11 @@ import app from './app.js'
 import dotenv from 'dotenv'
 import { sequelize } from './database/database.js'
 
+// importamos los modelos
+import './models/AdminUser.js'
+import './models/Role.js'
+import './models/DataAdminuser.js'
+
 async function main () {
   try {
     dotenv.config({ path: '.env' }) // Configuramos el .env con dotenv
