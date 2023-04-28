@@ -1,8 +1,7 @@
-import { DataTypes } from 'sequelize'
-import { sequelize } from '../database/database.js'
-import { DataAdminuser } from './DataAdminuser.js'
+import { DataTypes, sequelize } from '../config/config.js'
+import { DataAdminUser } from './DataAdminUser.js'
 
-export const Adminuser = sequelize.define('adminusers', {
+export const AdminUser = sequelize.define('admin_user', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -11,25 +10,42 @@ export const Adminuser = sequelize.define('adminusers', {
   },
   username: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    required: [true, 'Please entre the user']
   },
   password: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    required: [true, 'Please entre the password']
   },
   email: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    required: [true, 'Please entre the email']
   }
 
+}, {
+  sequelize,
+  tableName: 'admin_user',
+  schema: 'public',
+  timestamps: true,
+  indexes: [
+    {
+      name: 'admin_user_pkey',
+      unique: true,
+      fields: [
+        { name: 'id' }
+      ]
+    }
+  ]
 })
 
-Adminuser.hasOne(DataAdminuser, {
+AdminUser.hasOne(DataAdminUser, {
   foreignKey: 'useradmin_Id',
   sourceKey: 'id'
 })
 
-DataAdminuser.belongsTo(Adminuser, {
+DataAdminUser.belongsTo(AdminUser, {
   foreignKey: 'useradmin_Id',
   targetId: 'id'
 })

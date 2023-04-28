@@ -1,8 +1,7 @@
-import { DataTypes } from 'sequelize'
-import { sequelize } from '../database/database.js'
-import { Adminuser } from './AdminUser.js'
+import { DataTypes, sequelize } from '../config/config.js'
+import { AdminUser } from './AdminUser.js'
 
-export const Role = sequelize.define('roles', {
+export const Role = sequelize.define('role', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -13,14 +12,28 @@ export const Role = sequelize.define('roles', {
     type: DataTypes.STRING,
     allowNull: false
   }
+}, {
+  sequelize,
+  tableName: 'role',
+  schema: 'public',
+  timestamps: false,
+  indexes: [
+    {
+      name: 'role_pkey',
+      unique: true,
+      fields: [
+        { name: 'id' }
+      ]
+    }
+  ]
 })
 
-Role.hasMany(Adminuser, {
+Role.hasMany(AdminUser, {
   foreignKey: 'role_Id',
   sourceKey: 'id'
 })
 
-Adminuser.belongsTo(Role, {
+AdminUser.belongsTo(Role, {
   foreignKey: 'role_Id',
   targetId: 'id'
 })

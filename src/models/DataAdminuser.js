@@ -1,7 +1,6 @@
-import { DataTypes } from 'sequelize'
-import { sequelize } from '../database/database.js'
+import { DataTypes, sequelize } from '../config/config.js'
 
-export const DataAdminuser = sequelize.define('data_adminusers', {
+export const DataAdminUser = sequelize.define('data_admin_user', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -45,4 +44,18 @@ export const DataAdminuser = sequelize.define('data_adminusers', {
     allowNull: false
   }
 
+}, {
+  sequelize,
+  tableName: 'data_admin_user',
+  schema: 'public',
+  timestamps: true,
+  indexes: [
+    {
+      name: 'data_admin_user_pkey',
+      unique: true,
+      fields: [
+        { name: 'id' }
+      ]
+    }
+  ]
 })

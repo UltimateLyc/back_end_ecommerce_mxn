@@ -2,11 +2,11 @@
 import app from './app.js'
 import dotenv from 'dotenv'
 import { sequelize } from './database/database.js'
+import colors from 'colors' // eslint-disable-line no-unused-vars
 
 // importamos los modelos
-import './models/AdminUser.js'
-import './models/Role.js'
-import './models/DataAdminuser.js'
+/* eslint-disable no-unused-vars */
+import { AdminUser, Role, DataAdminUser } from './config/models.config.js'
 
 async function main () {
   try {
@@ -15,9 +15,9 @@ async function main () {
     await sequelize.authenticate() // Verifica que nos podamos conectar a la bd
     console.log('Connection with the server successful')
     app.listen(process.env.PORT) // Decimos que app escuche el puerto seleccionado
-    console.log(`Server connection on port ${process.env.PORT}`)
+    console.log(`Server connection on port ${process.env.PORT}`.cyan.underline)
   } catch (error) {
-    console.log(error)
+    console.log(error.red.underline)
   }
 }
 
