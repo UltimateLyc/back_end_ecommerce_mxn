@@ -29,11 +29,11 @@ export const Role = sequelize.define('role', {
 })
 
 Role.hasMany(AdminUser, {
-  foreignKey: 'role_Id',
+  foreignKey: 'id_role',
   sourceKey: 'id'
 })
 
 AdminUser.belongsTo(Role, {
-  foreignKey: 'role_Id',
+  foreignKey: 'id_role',
   targetId: 'id'
 })

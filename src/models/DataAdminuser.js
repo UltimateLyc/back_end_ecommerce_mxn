@@ -48,7 +48,7 @@ export const DataAdminUser = sequelize.define('data_admin_user', {
   sequelize,
   tableName: 'data_admin_user',
   schema: 'public',
-  timestamps: true,
+  timestamps: false,
   indexes: [
     {
       name: 'data_admin_user_pkey',

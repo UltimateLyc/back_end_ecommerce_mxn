@@ -11,7 +11,8 @@ export const AdminUser = sequelize.define('admin_user', {
   username: {
     type: DataTypes.STRING,
     allowNull: false,
-    required: [true, 'Please entre the user']
+    required: [true, 'Please entre the user'],
+    unique: true
   },
   password: {
     type: DataTypes.STRING,
@@ -21,14 +22,15 @@ export const AdminUser = sequelize.define('admin_user', {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
-    required: [true, 'Please entre the email']
+    required: [true, 'Please entre the email'],
+    unique: true
   }
 
 }, {
   sequelize,
   tableName: 'admin_user',
   schema: 'public',
-  timestamps: true,
+  timestamps: false,
   indexes: [
     {
       name: 'admin_user_pkey',
@@ -41,11 +43,11 @@ export const AdminUser = sequelize.define('admin_user', {
 })
 
 AdminUser.hasOne(DataAdminUser, {
-  foreignKey: 'useradmin_Id',
+  foreignKey: 'id_admin_user',
   sourceKey: 'id'
 })
 
 DataAdminUser.belongsTo(AdminUser, {
-  foreignKey: 'useradmin_Id',
+  foreignKey: 'id_admin_user',
   targetId: 'id'
 })
