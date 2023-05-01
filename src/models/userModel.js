@@ -1,5 +1,5 @@
 import { DataTypes, sequelize } from '../config/config.js'
-import { DataAdminUser } from './DataAdminUser.js'
+import { DataAdminUser } from './dataUserModel.js'
 
 export const AdminUser = sequelize.define('admin_user', {
   id: {

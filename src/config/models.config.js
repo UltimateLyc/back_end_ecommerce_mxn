@@ -1,6 +1,6 @@
-import { AdminUser } from '../models/AdminUser.js'
-import { DataAdminUser } from '../models/DataAdminUser.js'
-import { Role } from '../models/Role.js'
+import { AdminUser } from '../models/userModel.js'
+import { DataAdminUser } from '../models/dataUserModel.js'
+import { Role } from '../models/roleModel.js'
 
 export {
   AdminUser,

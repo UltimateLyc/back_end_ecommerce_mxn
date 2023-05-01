@@ -1,5 +1,5 @@
 import express from 'express'
-import { roleRoutes } from './config/roles.config.js'
+import { roleRoutes } from './config/routes.config.js'
 
 const app = express() // manda llamar a ejecutar express para crear el server
 app.use(express.urlencoded({ extends: false })) // Para resibir informacion por body urlencoded
