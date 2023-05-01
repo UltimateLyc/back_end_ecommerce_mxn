@@ -8,7 +8,7 @@ export const Role = sequelize.define('role', {
     autoIncrement: true,
     allowNull: false
   },
-  role_type: {
+  role: {
     type: DataTypes.STRING,
     allowNull: false
   }
@@ -16,7 +16,7 @@ export const Role = sequelize.define('role', {
   sequelize,
   tableName: 'role',
   schema: 'public',
-  timestamps: false,
+  timestamps: true,
   indexes: [
     {
       name: 'role_pkey',
