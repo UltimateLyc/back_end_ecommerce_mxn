@@ -30,7 +30,7 @@ export const AdminUser = sequelize.define('admin_user', {
   sequelize,
   tableName: 'admin_user',
   schema: 'public',
-  timestamps: false,
+  timestamps: true,
   indexes: [
     {
       name: 'admin_user_pkey',
