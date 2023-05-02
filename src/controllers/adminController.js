@@ -1,9 +1,10 @@
 /* eslint-disable camelcase */
-import { AdminUser } from '../config/models.config.js'
+import { User } from '../config/models.config.js'
 import asyncHandler from 'express-async-handler'
-// import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 import bcryptjs from 'bcryptjs'
 
+// Create new user
 export const setUser = asyncHandler(async (req, res) => {
   const { username, password, email, id_role } = req.body
 
@@ -13,8 +14,8 @@ export const setUser = asyncHandler(async (req, res) => {
   }
 
   /* User exist
-  const userExist = await AdminUser.findOne({ username })
-  const emailExist = await AdminUser.findOne({ email })
+  const userExist = await User.findOne({ username })
+  const emailExist = await User.findOne({ email })
 
   if (emailExist) {
     res.status(400)
@@ -27,7 +28,7 @@ export const setUser = asyncHandler(async (req, res) => {
   const hashedPassword = await bcryptjs.hash(password, salt)
 
   // Create new user
-  const newUser = await AdminUser.create({
+  const newUser = await User.create({
     username,
     password: hashedPassword,
     email,
@@ -44,5 +45,31 @@ export const setUser = asyncHandler(async (req, res) => {
   } else {
     res.status(400)
     throw new Error('No se pudo generar el usuario')
+  }
+})
+
+// Generate token
+const genereteToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: '30d'
+  })
+}
+
+// Login User
+export const loginUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body
+  const user = await User.findOne({ email })
+
+  if (user && (await bcryptjs.compare(password, user.password))) {
+    res.json({
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      token: genereteToken(user.id),
+      meesage: 'Login Exitoso'
+    })
+  } else {
+    res.status(400)
+    throw new Error('Credenciales incorrectas')
   }
 })

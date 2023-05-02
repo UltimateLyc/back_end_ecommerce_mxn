@@ -15,7 +15,7 @@ export const setRole = asyncHandler(async (req, res) => {
       role
     })
 
-    res.status(200).json(setRole)
+    res.status(201).json(setRole)
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
