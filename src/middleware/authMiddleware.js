@@ -10,15 +10,15 @@ const protect = asyncHandler(async (req, res, next) => {
     try {
       // Obtenemos el token
       token = req.headers.authorization.split(' ')[1]
-      console.log(req.headers.authorization.split(' '))
+      // console.log('**************   split', req.headers.authorization.split(' ')[1], '**************')
 
       // Verificamos el token
       const decoded = jwt.verify(token, process.env.JWT_SECRET)
-      console.log(decoded)
+      // console.log('**************  decoded', decoded, '**************')
 
       // Obtenemos los datos del usuario del mismo token
-      req.user = await User.findById(decoded.id).select('-password')
-      console.log(await User.findById(decoded.id))
+      req.user = await User.findByPk(decoded.id).catch('-password')
+      // console.log('**************    findByid', await User.findByPk(decoded.id).catch('-password'), '**************')
 
       next()
     } catch (error) {

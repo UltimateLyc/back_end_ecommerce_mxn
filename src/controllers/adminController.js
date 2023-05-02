@@ -73,3 +73,14 @@ export const loginUser = asyncHandler(async (req, res) => {
     throw new Error('Credenciales incorrectas')
   }
 })
+
+export const dataUser = asyncHandler(async (req, res) => {
+  const { id, username, email, id_role } = req.user
+
+  res.status(200).json({
+    id,
+    username,
+    email,
+    id_role
+  })
+})
