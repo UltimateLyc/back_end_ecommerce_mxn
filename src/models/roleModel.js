@@ -1,5 +1,5 @@
 import { DataTypes, sequelize } from '../config/config.js'
-import { AdminUser } from './userModel.js'
+import { User } from './userModel.js'
 
 export const Role = sequelize.define('role', {
   id: {
@@ -28,12 +28,12 @@ export const Role = sequelize.define('role', {
   ]
 })
 
-Role.hasMany(AdminUser, {
+Role.hasMany(User, {
   foreignKey: 'id_role',
   sourceKey: 'id'
 })
 
-AdminUser.belongsTo(Role, {
+User.belongsTo(Role, {
   foreignKey: 'id_role',
   targetId: 'id'
 })

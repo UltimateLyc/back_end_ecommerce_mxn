@@ -1,7 +1,7 @@
 import { DataTypes, sequelize } from '../config/config.js'
-import { DataAdminUser } from './dataUserModel.js'
+import { DataUser } from './dataUserModel.js'
 
-export const AdminUser = sequelize.define('admin_user', {
+export const User = sequelize.define('user', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -28,12 +28,12 @@ export const AdminUser = sequelize.define('admin_user', {
 
 }, {
   sequelize,
-  tableName: 'admin_user',
+  tableName: 'user',
   schema: 'public',
   timestamps: true,
   indexes: [
     {
-      name: 'admin_user_pkey',
+      name: 'user_pkey',
       unique: true,
       fields: [
         { name: 'id' }
@@ -42,12 +42,12 @@ export const AdminUser = sequelize.define('admin_user', {
   ]
 })
 
-AdminUser.hasOne(DataAdminUser, {
-  foreignKey: 'id_admin_user',
+User.hasOne(DataUser, {
+  foreignKey: 'id_user',
   sourceKey: 'id'
 })
 
-DataAdminUser.belongsTo(AdminUser, {
-  foreignKey: 'id_admin_user',
+DataUser.belongsTo(User, {
+  foreignKey: 'id_user',
   targetId: 'id'
 })

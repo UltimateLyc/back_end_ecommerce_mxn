@@ -6,7 +6,7 @@ import colors from 'colors' // eslint-disable-line no-unused-vars
 
 // importamos los modelos
 /* eslint-disable no-unused-vars */
-import { AdminUser, Role, DataAdminUser } from './config/models.config.js'
+import { User, Role, DataUser } from './config/models.config.js'
 
 async function main () {
   try {
